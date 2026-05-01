@@ -1,0 +1,11 @@
+parameters:
+    level: max
+    paths:
+        - src
+
+    # PHPDoc says property values are constrained to string|int|float|bool|Money,
+    # but at runtime users can pass any value past the type hints (PHP doesn't
+    # enforce phpdoc). The defense-in-depth `is_string() || is_int() || ...`
+    # branches in serializeProperties() and captureError() context handling
+    # are intentional, not dead code. Trust runtime, not the phpdoc.
+    treatPhpDocTypesAsCertain: false
